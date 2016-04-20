@@ -2,14 +2,14 @@ Sub setupNetwork(setupParams As Object)
 
     stop
 
-    if setupParams.setupEthernet then
+    if type(setupParams.setupEthernet) = "roBoolean" and setupParams.setupEthernet and type(setupParams.ethernetParams) = "roAssociativeArray" then
         nc = CreateObject("roNetworkConfiguration", 0)
         if type(nc) = "roNetworkConfiguration" then
             ConfigureNetwork(nc, setupParams.ethernetParams)
         endif
     endif
 
-    if setupParams.setupWireless then
+    if type(setupParams.setupWireless) = "roBoolean" and setupParams.setupWireless and type(setupParams.wirelessParams) = "roAssociativeArray" then
         nc = CreateObject("roNetworkConfiguration", 1)
         if type(nc) = "roNetworkConfiguration" then
             ConfigureNetwork(nc, setupParams.wirelessParams)
@@ -42,6 +42,7 @@ Sub ConfigureNetwork(nc As Object, networkingParameters As Object)
 	nc.SetInboundShaperRate(-1)
 
 	ok = nc.Apply()
+stop
 
 End Sub
 
