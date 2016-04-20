@@ -23,14 +23,13 @@ Sub Main()
 
     setupParams.setupWireless = true
 
-    setupParams.wirelessParams.useDHCP = false
+    setupParams.wirelessParams = {}
 
-    setupParams.wirelessParams.staticIPAddress = "10.1.0.180"
-    setupParams.wirelessParams.subnetMask = "255.255.255.0"
-    setupParams.wirelessParams.gateway = "10.1.0.1"
-    setupParams.wirelessParams.dns1 = "10.1.0.25"
-    setupParams.wirelessParams.dns2 = "10.1.0.35"
-    setupParams.wirelessParams.dns3 = ""
+    ' enter SSID, passphrase below
+    setupParams.wirelessParams.ssid = ""
+    setupParams.wirelessParams.passphrase = ""
+
+    setupParams.wirelessParams.useDHCP = true
 
     setupParams.wirelessParams.timeServer = "http://time.brightsignnetwork.com"
     setupParams.wirelessParams.proxySpec = ""

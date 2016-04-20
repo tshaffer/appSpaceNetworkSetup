@@ -1,7 +1,5 @@
 Sub setupNetwork(setupParams As Object)
 
-    stop
-
     if type(setupParams.setupEthernet) = "roBoolean" and setupParams.setupEthernet and type(setupParams.ethernetParams) = "roAssociativeArray" then
         nc = CreateObject("roNetworkConfiguration", 0)
         if type(nc) = "roNetworkConfiguration" then
@@ -22,6 +20,11 @@ End Sub
 
 
 Sub ConfigureNetwork(nc As Object, networkingParameters As Object)
+
+    if type(networkingParameters.ssid) = "roString" then
+        nc.SetWiFiESSID(networkingParameters.ssid)
+        nc.SetWiFiPassphrase(networkingParameters.passphrase)
+    endif
 
     if networkingParameters.useDHCP then
         nc.SetDHCP()
